@@ -1,0 +1,73 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMDB后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form action="{% url 'user:passwd' %}" method="POST">
+                {% if errors %}
+                    {%for key, error in errors.items %}
+                        <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        <!--{{ error }}<br/>-->
+                    {%endfor%}
+                {%endif%}
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ user.id }}" />
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label>用户名</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" type="text" name="name" value="{{ user.name }}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label>旧密码</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" type="password" name="old_passwd" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label>新密码</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" type="password" name="new_passwd_one" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label>确认密码</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" type="password" name="new_passwd_two" />
+                    </div>
+                </div>
+                <!--<button class="btn btn-lg btn-primary btn-block" type="submit">查找</button>-->
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button class="btn btn-lg btn-success btn-xs" type="submit">确认修改</button>
+                    </div>
+                    <!--<div class="col-md-9">-->
+
+                    <!--</div>-->
+                </div>
+                <!--<input type="submit" value="增加"/>-->
+
+
+            </form>
+        </div>
+    </div>
+</body>
