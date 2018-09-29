@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>nginx日志</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+        <tr>
+            <th>IP</th>
+            <th>TIME</th>
+            <th>URL</th>
+            <th>STATUS</th>
+            <th>COUNT</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in results %}
+            <tr>
+                <td>{{ result.0 }}</td>
+                <td>{{ result.1 }}</td>
+                <td>{{ result.2 }}</td>
+                <td>{{ result.3 }}</td>
+                <td>{{ result.4 }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

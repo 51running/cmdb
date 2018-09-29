@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMDB后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%  static 'user/login.css'%}">
+</head>
+<body>
+    <div class="row">
+        <div class="container">
+            <form class="form-signin" action="{% url 'user:find' %}" method="POST">
+                <h2 class="form-signin-heading">用户查找</h2>
+                {% if errors %}
+                    {%for key, error in errors.items %}
+                        <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        <!--{{ error }}<br/>-->
+                    {%endfor%}
+                {%endif%}
+                {% csrf_token %}
+                <label for="name" class="sr-only">用户名</label>
+                <input class="form-control" type="text" name="name" />
+                <!--<input type="submit" value="查找"/>-->
+                <button class="btn btn-lg btn-primary btn-block" type="submit">查找</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
