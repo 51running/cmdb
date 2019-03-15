@@ -1,2 +1,0 @@
-localhost ansible_port=62200
-test_10 ansible_host=47.106.215.108 ansible_user=tompsontest ansible_port=62200
