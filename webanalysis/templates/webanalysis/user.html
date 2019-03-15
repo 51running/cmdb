@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>邮箱</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users_page %}
+                <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if users_page.has_previous %}
+        <a href="?page={{ users_page.previous_page_number }}">上一页</a>
+    {% endif %}
+    {% for pg in users_page.paginator.page_range %}
+        {% if pg == users_page.number %}
+            <a href="?page={{ pg }}">{{ pg }}</a>
+        {% else %}
+            <a href="?page={{ pg }}">{{ pg }}</a>
+        {% endif %}
+    {% endfor %}
+    {% if users_page.has_next %}
+        <a href="?page={{ users_page.next_page_number }}">下一页</a>
+    {% endif %}
+</body>
+</html>
